@@ -2,6 +2,7 @@ import 'dart:ui' as prefix0;
 
 import 'package:flutter/material.dart';
 import 'package:meals/categories_screen.dart';
+import 'package:meals/category_meals_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -41,6 +42,9 @@ class MyApp extends StatelessWidget {
         )
       ),
       home: CategoriesScreen(),
+      routes: {
+       // '/': (ctx) => CategoriesScreen() ,//TODO => this line is similar to home: CategoriesScreen(),
+        CategoryMealScreen.screenPresenterName: (ctx) => CategoryMealScreen()}  // TODO: nothing but good practice for large project by registering screen to routes table and using by name
     );
   }
 }
