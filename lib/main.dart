@@ -1,8 +1,8 @@
 import 'dart:ui' as prefix0;
 
 import 'package:flutter/material.dart';
-import 'package:meals/categories_screen.dart';
-import 'package:meals/category_meals_screen.dart';
+import 'package:meals/widget/categories_screen.dart';
+import 'package:meals/widget/category_meals_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,16 +22,16 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.blue,
         accentColor: Colors.amber,
       //  canvasColor: Color.fromARGB(255 ,254, 229, 1),
         fontFamily: 'Raleway',
         textTheme: ThemeData.light().textTheme.copyWith(
           body1: TextStyle(
-            color: Color.fromARGB(20, 51, 51, 1)
+            //color: Color.fromARGB(20, 51, 51, 1)
           ),
           body2: TextStyle(
-            color: Color.fromARGB(20, 51, 51, 1)
+            //color: Color.fromARGB(20, 51, 51, 1)
           ),
           title: TextStyle(
             fontSize:  20,
