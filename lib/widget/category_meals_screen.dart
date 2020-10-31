@@ -29,7 +29,8 @@ class CategoryMealScreen extends StatelessWidget {
       appBar: AppBar(title: Text(CategoryTitle)),
       body: ListView.builder(itemBuilder: (ctx, index)  {
 
-        return MealItem(title: selectedCategoryMeals[index].title,
+        return MealItem(id: selectedCategoryMeals[index].id,
+            title: selectedCategoryMeals[index].title,
             imgUrl: selectedCategoryMeals[index].imageUrl,
             duration: selectedCategoryMeals[index].duration,
             complexity: selectedCategoryMeals[index].complexity,

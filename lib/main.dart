@@ -1,8 +1,12 @@
 import 'dart:ui' as prefix0;
 
 import 'package:flutter/material.dart';
+import 'package:meals/widget/bottom_tabs_screen.dart';
 import 'package:meals/widget/categories_screen.dart';
 import 'package:meals/widget/category_meals_screen.dart';
+import 'package:meals/widget/filters_screen.dart';
+import 'package:meals/widget/meal_detail_screen.dart';
+import 'package:meals/widget/tabs_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -41,10 +45,18 @@ class MyApp extends StatelessWidget {
           )
         )
       ),
-      home: CategoriesScreen(),
+      home: BottomTabsScreen(),//CategoriesScreen(), BottomTabsScreen(),TabsScreen()
       routes: {
        // '/': (ctx) => CategoriesScreen() ,//TODO => this line is similar to home: CategoriesScreen(),
-        CategoryMealScreen.screenPresenterName: (ctx) => CategoryMealScreen()}  // TODO: nothing but good practice for large project by registering screen to routes table and using by name
+        CategoryMealScreen.screenPresenterName: (ctx) => CategoryMealScreen(),
+        MealDetailScreen.routeName : (ctx) => MealDetailScreen(),
+        FilterScreen.routeName : (ctx) => FilterScreen(),
+
+      } , // TODO: nothing but good practice for large project by registering screen to routes table and using by name
+      onUnknownRoute: (settings){
+        return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
+      },
+
     );
   }
 }
