@@ -2,12 +2,12 @@ import 'dart:ui' as prefix0;
 
 import 'package:flutter/material.dart';
 import 'package:meals/dummy_data.dart';
-import 'package:meals/widget/bottom_tabs_screen.dart';
-import 'package:meals/widget/categories_screen.dart';
-import 'package:meals/widget/category_meals_screen.dart';
-import 'package:meals/widget/filters_screen.dart';
-import 'package:meals/widget/meal_detail_screen.dart';
-import 'package:meals/widget/tabs_screen.dart';
+import 'package:meals/screens_widget/bottom_tabs_screen.dart';
+import 'package:meals/screens_widget/categories_screen.dart';
+import 'package:meals/screens_widget/category_meals_screen.dart';
+import 'package:meals/screens_widget/filters_screen.dart';
+import 'package:meals/screens_widget/meal_detail_screen.dart';
+import 'package:meals/screens_widget/tabs_screen.dart';
 
 import 'model/meal.dart';
 
@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
     'vegetarian': false,
   };
   List<Meal> _availableMeals = DUMMY_MEALS;
+  List<Meal> _favouriteMeals = [];
 
   void _setFilters(Map<String, bool> filterData) {
     setState(() {
@@ -48,6 +49,27 @@ class _MyAppState extends State<MyApp> {
         return true;
       }).toList();
     });
+  }
+
+  void _toggleFavourite(String mealId){
+    final existingIndex = _favouriteMeals.indexWhere((meal) => meal.id == mealId);
+
+    if(existingIndex>=0){
+      setState(() {
+        _favouriteMeals.removeAt(existingIndex);
+      });
+    }else{
+
+      setState(() {
+        _favouriteMeals.add(DUMMY_MEALS.firstWhere((meal) => meal.id == mealId));
+
+      });
+
+    }
+  }
+
+  bool _isMealFavourite(String id){
+    return _favouriteMeals.any((meal) => meal.id == id);
   }
 
   @override
@@ -79,12 +101,12 @@ class _MyAppState extends State<MyApp> {
                   fontSize: 20,
                   fontFamily: 'RobotoCondensed',
                   fontWeight: prefix0.FontWeight.bold))),
-      home: BottomTabsScreen(),
+      home: BottomTabsScreen(_favouriteMeals),
       //CategoriesScreen(), BottomTabsScreen(),TabsScreen()
       routes: {
         // '/': (ctx) => CategoriesScreen() ,//TODO => this line is similar to home: CategoriesScreen(),
         CategoryMealScreen.screenPresenterName: (ctx) => CategoryMealScreen(_availableMeals),
-        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen(_toggleFavourite, _isMealFavourite),
         FilterScreen.routeName: (ctx) => FilterScreen(_filters,_setFilters),
       },
       // TODO: nothing but good practice for large project by registering screen to routes table and using by name

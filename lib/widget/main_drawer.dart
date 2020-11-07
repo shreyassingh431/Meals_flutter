@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meals/widget/filters_screen.dart';
+import 'package:meals/screens_widget/filters_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(String title, IconData icon, Function tapHandler) {

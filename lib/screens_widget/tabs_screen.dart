@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:meals/widget/categories_screen.dart';
-import 'package:meals/widget/favourite_screen.dart';
+import 'package:meals/screens_widget/categories_screen.dart';
 
+import 'favourite_screen.dart';
+
+//extra tabs demo screen, do not delete
 class TabsScreen extends StatefulWidget{
 
   @override
@@ -23,7 +25,7 @@ class _TabsScreenState extends State<TabsScreen> {
         ],),),
         body: TabBarView(children: <Widget>[
           CategoriesScreen(),
-          FavoutiteScreen(),
+         // FavoutiteScreen(),
         ]),
       ),);
   }
